@@ -6,6 +6,8 @@ import CatholicChurches from "./components/quick-links/CatholicChurches";
 import DistrictMap from "./pages/DistrictMap";
 import FloatingIcon from "./components/FloatingIcon";
 import LoginPage from "./pages/LoginPage";
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import 'leaflet/dist/leaflet.css';
 
@@ -43,6 +45,8 @@ const App: React.FC = () => {
           <main className="flex-1 bg-gray-100 overflow-auto">
             <Routes>
               <Route path="/" element={<Homepage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
               <Route path="/catholic-churches" element={<CatholicChurches />} />
               <Route path="/district-map" element={<DistrictMap />} />
               <Route path="/login" element={<LoginPage />} />
