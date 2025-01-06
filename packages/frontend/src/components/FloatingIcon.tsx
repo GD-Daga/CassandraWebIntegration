@@ -31,7 +31,6 @@ const FloatingIcon: React.FC = () => {
 
     updateLoginState();
 
-    
     const handleStorageChange = () => {
       updateLoginState();
     };
@@ -43,7 +42,6 @@ const FloatingIcon: React.FC = () => {
     };
   }, []);
 
-  
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -66,7 +64,6 @@ const FloatingIcon: React.FC = () => {
   const handleClick = () => setIsPopOutVisible(!isPopOutVisible);
 
   const handleSignOut = () => {
-    
     localStorage.removeItem("username");
     localStorage.removeItem("firstName");
     localStorage.removeItem("lastName");
@@ -83,7 +80,7 @@ const FloatingIcon: React.FC = () => {
     <div className="relative">
       <div
         ref={iconRef}
-        className={`fixed bottom-6 left-6 flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600 z-50 transition-all ${
+        className={`fixed bottom-6 left-6 flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-white z-50 transition-all ${
           isHovered ? "w-14 h-14" : "w-10 h-10"
         }`}
         onMouseEnter={handleMouseEnter}
@@ -91,9 +88,17 @@ const FloatingIcon: React.FC = () => {
         style={{ cursor: isHovered ? "pointer" : "default" }}
         onClick={handleClick}
       >
-        <span className="font-medium text-gray-600 dark:text-gray-300">
-          {isLoggedIn ? `${firstName[0].toUpperCase()}${lastName[0].toUpperCase()}` : "JL"}
-        </span>
+        {isLoggedIn ? (
+          <span className="font-medium text-black">
+            {`${firstName[0].toUpperCase()}${lastName[0].toUpperCase()}`}
+          </span>
+        ) : (
+          <img
+            src="/icons/user.png"
+            alt="Profile Icon"
+            className="h-full w-full object-cover rounded-full"
+          />
+        )}
       </div>
 
       {isPopOutVisible && (
@@ -118,7 +123,7 @@ const FloatingIcon: React.FC = () => {
               </button>
             ) : (
               <button
-                className="text-sm text-blue-600"
+                className="text-sm text-[#7c3732]"
                 onClick={() => navigate("/login")}
               >
                 Sign In

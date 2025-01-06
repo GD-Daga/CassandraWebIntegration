@@ -37,21 +37,24 @@ const SideNavbar: React.FC<SideNavbarProps> = ({ isOpen, onClose }) => {
         isOpen ? "translate-x-0" : "-translate-x-full"
       } lg:relative lg:translate-x-0`}
     >
-      <nav>
-        <ul>
-          <li className="px-6 py-2">
-            <a href="/" className="text-gray-300 hover:text-white">
-              Home
+      <nav className="mt-4">
+        <ul className="space-y-4">
+          <li className="px-6 py-3 hover:bg-[#6b2e2e] rounded-md">
+            <a href="/" className="flex items-center space-x-4 text-gray-300 hover:text-white">
+            <img src="/icons/home.png" alt="Home Icon" className="h-6 w-6" />
+              <span>Home</span>
             </a>
           </li>
-          <li className="px-6 py-2">
-            <a href="/about" className="text-gray-300 hover:text-white">
-              About
+          <li className="px-6 py-3 hover:bg-[#6b2e2e] rounded-md">
+            <a href="/about" className="flex items-center space-x-4 text-gray-300 hover:text-white">
+              <img src="/icons/info.png" alt="About Icon" className="h-6 w-6" />
+              <span>About</span>
             </a>
           </li>
-          <li className="px-6 py-2">
-            <a href="/contact" className="text-gray-300 hover:text-white">
-              Contact
+          <li className="px-6 py-3 hover:bg-[#6b2e2e] rounded-md">
+            <a href="/contact" className="flex items-center space-x-4 text-gray-300 hover:text-white">
+              <img src="/icons/location-mark.png" alt="Contact Icon" className="h-6 w-6" />
+              <span>Contact</span>
             </a>
           </li>
         </ul>

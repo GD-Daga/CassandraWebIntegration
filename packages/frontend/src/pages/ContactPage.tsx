@@ -6,8 +6,8 @@ const ContactPage: React.FC = () => {
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
         <div className="max-w-2xl lg:max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-extrabold text-gray-900">Visit Our Location</h2>
-          <p className="mt-4 text-lg text-gray-500">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          <p className="text-lg text-mono font-normal text-black mb-6 text-center">
+            Visit us at the Greenfield Tower!
           </p>
         </div>
 
