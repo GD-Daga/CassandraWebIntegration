@@ -50,11 +50,6 @@ const SideNavbar: React.FC<SideNavbarProps> = ({ isOpen, onClose }) => {
             </a>
           </li>
           <li className="px-6 py-2">
-            <a href="/services" className="text-gray-300 hover:text-white">
-              Blogs
-            </a>
-          </li>
-          <li className="px-6 py-2">
             <a href="/contact" className="text-gray-300 hover:text-white">
               Contact
             </a>
