@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URL } from "../config";
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState("");
@@ -22,8 +23,8 @@ const LoginPage: React.FC = () => {
     }
 
     const url = isRegistering
-      ? "http://localhost:5000/auth/register"
-      : "http://localhost:5000/auth/login";
+      ? `${BACKEND_URL}/auth/register`
+      : `${BACKEND_URL}/auth/login`;
 
     const requestBody = isRegistering
       ? { username, password, firstName, lastName }

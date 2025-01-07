@@ -3,6 +3,7 @@ import { faXmark, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import churchList from "../../assets/data/churches.json";
+import { BACKEND_URL } from "../../config";
 
 const CatholicChurches: React.FC = () => {
   const [showDistrictModal, setShowDistrictModal] = useState(false);
@@ -46,7 +47,7 @@ const CatholicChurches: React.FC = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/bookmarks/add-bookmark', {
+      const response = await fetch(`${BACKEND_URL}/bookmarks/add-bookmark`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -75,7 +76,7 @@ const CatholicChurches: React.FC = () => {
 
   const fetchBookmarks = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/bookmarks/get-bookmarks?username=${username}`);
+      const response = await fetch(`${BACKEND_URL}/bookmarks/get-bookmarks?username=${username}`);
       if (!response.ok) {
         throw new Error('Failed to fetch bookmarks');
       }
@@ -89,7 +90,7 @@ const CatholicChurches: React.FC = () => {
 
   const handleDeleteBookmark = async (churchName: string) => {
     try {
-      const response = await fetch('http://localhost:5000/bookmarks/remove-bookmark', {
+      const response = await fetch(`${BACKEND_URL}/bookmarks/remove-bookmark`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

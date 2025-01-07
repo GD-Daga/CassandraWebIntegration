@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Website registration endpoint URL (adjusted for your app)
-REGISTER_URL="http://localhost:5000/auth/register"
+REGISTER_URL="BACKEND_URL/auth/register"
 
 # Registration details (matching form fields in your React app)
 FIRSTNAME="test"

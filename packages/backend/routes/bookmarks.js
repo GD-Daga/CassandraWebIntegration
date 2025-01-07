@@ -4,7 +4,7 @@ const router = express.Router();
 
 // Cassandra Client Configuration
 const client = new cassandra.Client({
-  contactPoints: [process.env.CASSANDRA_CONTACT_POINTS || '127.0.0.1'],
+  contactPoints: [process.env.CASSANDRA_CONTACT_POINTS || '0.0.0.0'],
   localDataCenter: 'datacenter1',
   keyspace: process.env.CASSANDRA_KEYSPACE || 'user_db',
   authProvider: new cassandra.auth.PlainTextAuthProvider(

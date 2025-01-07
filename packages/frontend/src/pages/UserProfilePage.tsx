@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { BACKEND_URL } from "../config";
 
 interface UserProfile {
   username: string;
@@ -32,7 +33,7 @@ const UserProfilePage: React.FC = () => {
         }
 
         const response = await fetch(
-          `http://localhost:5000/auth/profile?username=${username}`,
+          `${BACKEND_URL}/auth/profile?username=${username}`,
           {
             method: "GET",
             headers: {
@@ -71,7 +72,7 @@ const UserProfilePage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/auth/update-profile", {
+      const response = await fetch(`${BACKEND_URL}/auth/update-profile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
