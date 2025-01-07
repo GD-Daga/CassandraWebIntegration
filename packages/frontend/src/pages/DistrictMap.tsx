@@ -38,9 +38,9 @@ const DistrictMap: React.FC = () => {
   const navigate = useNavigate();
   const params = new URLSearchParams(location.search);
   const district = params.get("district");
+  const churchFromQuery = params.get("church");
 
   const [searchTerm, setSearchTerm] = useState("");
-
   const [userLocation, setUserLocation] = useState<[number, number] | null>(
     null
   );
@@ -101,6 +101,17 @@ const DistrictMap: React.FC = () => {
       setMapZoom(15);
     }
   }, [showAllChurches]);
+
+  useEffect(() => {
+    if (churchFromQuery) {
+      const church = churchList.find((ch) => ch.name === churchFromQuery);
+      if (church) {
+        setSelectedChurchName(church.name);
+        setMapCenter([church.lat, church.lon]);
+        setShowAllChurches(false);
+      }
+    }
+  }, [churchFromQuery]);
 
   const handleDistrictChange = (
     event: React.ChangeEvent<HTMLSelectElement>
@@ -226,9 +237,7 @@ const DistrictMap: React.FC = () => {
               {selectedChurch && userLocation && (
                 <Marker position={userLocation} icon={rangeIndicatorIcon}>
                   <Popup>
-                    {/* Implement or remove this line as necessary */}
-                    Distance to {selectedChurch.name}:{" "}
-                    {/* Add distance calculation here */}
+                    Distance to {selectedChurch.name}: {/* Add distance logic */}
                   </Popup>
                 </Marker>
               )}
@@ -308,9 +317,7 @@ const DistrictMap: React.FC = () => {
             {selectedChurch && userLocation && (
               <Marker position={userLocation} icon={rangeIndicatorIcon}>
                 <Popup>
-                  {/* Implement or remove this line as necessary */}
-                  Distance to {selectedChurch.name}:{" "}
-                  {/* Add distance calculation here */}
+                  Distance to {selectedChurch.name}: {/* Add distance logic */}
                 </Popup>
               </Marker>
             )}
