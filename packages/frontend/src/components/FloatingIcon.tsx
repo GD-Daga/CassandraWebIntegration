@@ -90,7 +90,7 @@ const FloatingIcon: React.FC = () => {
       >
         {isLoggedIn ? (
           <span className="font-medium text-black">
-            {`${firstName[0].toUpperCase()}${lastName[0].toUpperCase()}`}
+            {`${firstName[0]?.toUpperCase()}${lastName[0]?.toUpperCase()}`}
           </span>
         ) : (
           <img
@@ -118,9 +118,17 @@ const FloatingIcon: React.FC = () => {
           </div>
           <div className="flex justify-between">
             {isLoggedIn ? (
-              <button className="text-sm text-red-600" onClick={handleSignOut}>
-                Sign Out
-              </button>
+              <>
+                <button
+                  className="text-sm text-blue-600"
+                  onClick={() => navigate("/profile")}
+                >
+                  Profile
+                </button>
+                <button className="text-sm text-red-600" onClick={handleSignOut}>
+                  Sign Out
+                </button>
+              </>
             ) : (
               <button
                 className="text-sm text-[#7c3732]"
