@@ -1,0 +1,11 @@
+services:
+  cassandra:
+    image: cassandra:latest
+    volumes:
+      - ./.container/data/cassandra:/var/lib/cassandra
+    ports:
+      - "7000:7000"
+      - "9042:9042"
+    expose:
+      - 7000
+      - 9042
