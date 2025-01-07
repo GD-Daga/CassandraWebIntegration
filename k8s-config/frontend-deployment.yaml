@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: web-app-frontend:v1  # Replace with your container image
+        imagePullPolicy: Never  # Prevents pulling the image from a registry
+        env:
+        - name: BACKEND_URL
+          value: http://backend.default.svc.cluster.local:5000  # Internal URL for backend
+        ports:
+        - containerPort: 3000

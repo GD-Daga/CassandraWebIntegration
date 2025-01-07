@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: web-app-backend:v1  # Replace with your container image
+        imagePullPolicy: Never  # Prevents pulling the image from a registry
+        env:
+        - name: CASSANDRA_CONTACT_POINTS
+          value: cassandra.default.svc.cluster.local  # Hostname provided by headless service
+        - name: CASSANDRA_PORT
+          value: "9042"
+        - name: CASSANDRA_KEYSPACE
+          value: "user_db"
+        - name: CASSANDRA_USERNAME
+          value: "cassandra"
+        - name: CASSANDRA_PASSWORD
+          value: "cassandra"
+        - name: PORT
+          value: "5000"
+        ports:
+        - containerPort: 5000
