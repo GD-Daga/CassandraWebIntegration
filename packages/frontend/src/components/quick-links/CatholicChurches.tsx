@@ -56,7 +56,7 @@ const CatholicChurches: React.FC = () => {
     <div>
       {/* Main Card */}
       <div
-        className="relative flex items-center justify-center flex-col cursor-pointer transform transition-transform duration-300 ease-in-out hover:scale-105"
+        className="relative flex items-center justify-center flex-col cursor-pointer transform transition-transform duration-300 ease-in-out hover:scale-100"
         onClick={() => setShowDistrictModal(true)}
       >
         <img

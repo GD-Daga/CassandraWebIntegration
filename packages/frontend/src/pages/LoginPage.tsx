@@ -58,11 +58,11 @@ const LoginPage: React.FC = () => {
     <div className="bg-gray-50 font-[sans-serif]">
       <div className="min-h-screen flex flex-col items-center justify-center py-6 px-4">
         <div className="max-w-md w-full">
-          <a href="#">
+        <a href="#">
             <img
-              src="https://readymadeui.com/readymadeui.svg"
+              src="tblogo.png"
               alt="logo"
-              className="w-40 mb-8 mx-auto block"
+              className="w-60 mx-auto block mb-4"
             />
           </a>
 
@@ -120,7 +120,7 @@ const LoginPage: React.FC = () => {
                 />
               </div>
 
-              <button className="w-full py-3 px-4 text-sm rounded-lg bg-blue-600 text-white">
+              <button className="w-full py-3 px-4 text-sm rounded-lg bg-[#7c3732] text-white">
                 {isRegistering ? "Register" : "Sign in"}
               </button>
 
@@ -129,7 +129,7 @@ const LoginPage: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setIsRegistering(!isRegistering)}
-                  className="text-blue-600 underline"
+                  className="text-[#7c3732] underline"
                 >
                   {isRegistering ? "Sign in" : "Register"}
                 </button>
