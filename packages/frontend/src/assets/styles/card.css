@@ -34,3 +34,25 @@
 .card-link:hover {
     text-decoration: underline;
 }
+
+.card-button {
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  .card-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  .card-button:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+  }
+  
