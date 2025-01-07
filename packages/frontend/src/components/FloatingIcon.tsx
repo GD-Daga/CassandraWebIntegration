@@ -75,7 +75,7 @@ const FloatingIcon: React.FC = () => {
     window.dispatchEvent(new Event("storage"));
     navigate("/login");
   };
-
+//Editing
   return (
     <div className="relative">
       <div
@@ -120,7 +120,7 @@ const FloatingIcon: React.FC = () => {
             {isLoggedIn ? (
               <>
                 <button
-                  className="text-sm text-blue-600"
+                  className="text-sm text-[#6b2e2e]"
                   onClick={() => navigate("/profile")}
                 >
                   Profile
