@@ -6,12 +6,45 @@ const router = express.Router();
 const client = new cassandra.Client({
   contactPoints: [process.env.CASSANDRA_CONTACT_POINTS || '127.0.0.1'],
   localDataCenter: 'datacenter1',
-  keyspace: process.env.CASSANDRA_KEYSPACE || 'user_db', //Database Keyspace
+  keyspace: process.env.CASSANDRA_KEYSPACE || 'user_db', // Database Keyspace
   authProvider: new cassandra.auth.PlainTextAuthProvider(
     process.env.CASSANDRA_USERNAME,
     process.env.CASSANDRA_PASSWORD
   ),
 });
+
+// **Initialize Cassandra Keyspace and Tables**
+const initializeCassandra = async () => {
+  const keyspaceQuery = `
+    CREATE KEYSPACE IF NOT EXISTS ${process.env.CASSANDRA_KEYSPACE || 'user_db'}
+    WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+  `;
+
+  const createUsersTableQuery = `
+    CREATE TABLE IF NOT EXISTS ${process.env.CASSANDRA_KEYSPACE || 'user_db'}.users (
+      username TEXT PRIMARY KEY,
+      password TEXT,
+      first_name TEXT,
+      last_name TEXT,
+      email TEXT,
+      location TEXT,
+      about TEXT
+    );
+  `;
+
+  try {
+
+    await client.execute(keyspaceQuery);
+    console.log('Keyspace created or already exists.');
+
+    await client.execute(createUsersTableQuery);
+    console.log('Users table created or already exists.');
+  } catch (error) {
+    console.error('Error during Cassandra initialization:', error);
+  }
+};
+
+initializeCassandra();
 
 // **Registration Route**
 router.post('/register', async (req, res) => {
@@ -127,7 +160,6 @@ router.put('/update-profile', async (req, res) => {
   }
 
   try {
-
     if (!email && !location && !about) {
       return res.status(400).json({ success: false, message: 'At least one field (email, location, about) must be provided.' });
     }
