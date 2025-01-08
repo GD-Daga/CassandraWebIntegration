@@ -1,1 +1,0 @@
-docker-compose exec cassandra cqlsh cassandra 9042
