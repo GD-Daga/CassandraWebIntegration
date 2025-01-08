@@ -4,22 +4,26 @@ metadata:
   name: webapp-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/default-backend: frontend
 spec:
   rules:
-  - host: webapp.local  # Your custom local domain
+  - host: webapp.api  # Your custom local domain
     http:
       paths:
-      - path: /api/
+      - path: /
         pathType: Prefix
         backend:
           service:
             name: backend
             port:
               number: 5000
+  - host: webapp.local 
+    http:
+      paths:
       - path: /
         pathType: Prefix
         backend:
           service:
             name: frontend
             port:
-              number: 3000
+              number: 80

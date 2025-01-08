@@ -14,9 +14,24 @@ app.use(bodyParser.json());
 app.use('/auth', authRoutes);
 app.use('/bookmarks', bookmarksRoutes);
 
-const PORT = process.env.PORT || 5000;
-const HOST = '0.0.0.0';
-app.listen(PORT, HOST, () => {
-  console.log(`Server running on http://${HOST}:${PORT}`);
+const cassandra = require('cassandra-driver');
+
+const client = new cassandra.Client({
+  contactPoints: ['cassandra-0.cassandra.default.svc.cluster.local'],
+  localDataCenter: 'datacenter1',
+  keyspace: 'user_db',
+  credentials: { username: 'cassandra', password: 'cassandra' }
 });
 
+// async function run() {
+//   const query = 'SELECT * FROM users';
+//   const result = await client.execute(query);
+//   console.log(result.rows);
+// }
+// run().catch(console.error);
+
+const PORT = process.env.PORT || 5000;
+// const HOST = '0.0.0.0';
+app.listen(PORT, () => {
+  console.log(`Server running on PORT ${PORT}`);
+});

@@ -14,4 +14,4 @@ RUN npm install
 COPY . .
 
 #Run webapp
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]
