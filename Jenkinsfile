@@ -4,9 +4,6 @@ pipeline {
         stage('Checkout') {
             steps {
                // git branch: 'dev', url: 'https://github.com/bfelican0/CassandraWebIntegration.git'
-               dir('/Users/academy/Desktop/CassandraWebIntegration') {
-                    sh 'cp -r . ${WORKSPACE}'
-                }
             }
         }
         stage('Build Cassandra') {
