@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Website login endpoint URL (replace with your actual URL)
-LOGIN_URL="http://localhost:5000/auth/login"  # Make sure this matches the actual port you're using
+LOGIN_URL="BACKEND_URL/auth/login"  # Make sure this matches the actual port you're using
 
 # Login credentials
 USERNAME="testuser"
