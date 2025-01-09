@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: splunk
+  labels:
+    app: splunk
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: splunk
+  template:
+    metadata:
+      labels:
+        app: splunk
+    spec:
+      containers:
+        - name: splunk
+          image: splunk/splunk:latest  # Official Splunk image
+          ports:
+            - containerPort: 8000  # Web UI
+            - containerPort: 8089  # Management port
+            - containerPort: 9997  # Data ingest port
+          env:
+            - name: SPLUNK_START_ARGS
+              value: "--accept-license"
+            - name: SPLUNK_USER
+              value: "admin"
+            - name: SPLUNK_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: splunk-secrets
+                  key: splunk-password
+          volumeMounts:
+            - name: splunk-storage
+              mountPath: /opt/splunk/var
+      volumes:
+        - name: splunk-storage
+          persistentVolumeClaim:
+            claimName: splunk-pvc
